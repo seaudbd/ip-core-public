@@ -67,7 +67,7 @@ export default function Home() {
 							{results.map((result, index) => (
 								<div key={index} className="bg-slate-50 p-4 mb-4 rounded-lg shadow-md">
 									<h3 className="text-xl font-semibold text-gray-800">{result['name']}</h3>
-									<p className="text-gray-600">Author: {result['short_desc']}</p>
+									<p className="text-gray-600">{result['short_desc']}</p>
 								</div>
 							))}
                     	</div>
