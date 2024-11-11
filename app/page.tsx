@@ -1,9 +1,7 @@
 "use client";
 
+import Link from '@/node_modules/next/link';
 import { useState } from 'react';
-
-
-
 
 export default function Home() {
 	const [query, setQuery] = useState('');
@@ -25,7 +23,8 @@ export default function Home() {
             const data = await response.json();
 
             // Extract relevant information (e.g., title and author)
-            const formattedResults = data.payload.map((ip: { name: string; overview: string; short_desc: string; }) => ({
+            const formattedResults = data.payload.map((ip: { slug: string; name: string; overview: string; short_desc: string; }) => ({
+                slug: ip.slug,
                 name: ip.name,
                 short_desc: ip.overview ? ip.overview : ip.short_desc,
             }));
@@ -68,6 +67,7 @@ export default function Home() {
 								<div key={index} className="bg-slate-50 p-4 mb-4 rounded-lg shadow-md">
 									<h3 className="text-xl font-semibold text-gray-800">{result['name']}</h3>
 									<p className="text-gray-600">{result['short_desc']}</p>
+                                    <p className="text-blue-600 mt-3 text-right text-sm"><Link href={"ip-details/" + result['slug']}>Get Details</Link></p>
 								</div>
 							))}
                     	</div>
